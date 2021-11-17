@@ -1,0 +1,33 @@
+//1.字符串以'/0'为结束标志，strlen函数返回的是在字符串中'\0'前面出现的字符个数（不包含'\0
+//2.参数指向的字符串必须要以'\0'结束
+//如 char a[] = {'a', 'b', 'c'}; 就不是以'\0'结尾；
+//注意strlen函数的返回值是 unsigned int ,是无符号的(易错)
+//3.学会strlen函数的模拟实现 计数器， 递归， 指针相减
+
+int mystrlen(const char* str)//const修饰 *str 说明str内容不可改变
+{
+    int count = 0;
+    while(*str != '\0')
+    {
+        count++;
+        str++;
+    }
+    return count++;
+}
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    /*if(strlen("abc") - strlen("abcde") > 0)
+    {
+        printf("大了");//输出结果是大了，原因是  strlen的返回类型是无符号整型，所以相减的结果也是无符号整型，肯定大于等于0
+    }
+    else
+    {
+        printf("小了");
+    }*/
+    int len = mystrlen("abcdef");
+    printf("%d", len);
+
+    return 0;
+}
