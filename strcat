@@ -5,6 +5,7 @@
 //源字符串必须以"\0"结束
 //目标空间足够大
 //目标空间必须能够改变(常量字符串不行)
+//不能自己给自己追加
 char* mystrcat(char* dest,const char* src)
 {
     assert(dest != NULL);
@@ -16,9 +17,15 @@ char* mystrcat(char* dest,const char* src)
         dest++;
     }
     //追加
-    while(*dest++ = *src++)
+    /*while(*dest++ = *src++)
     {
         ;
+    }*/
+    while(*src != '\0')
+    {
+        *dest = *src;
+        dest++;
+        src++;
     }
     return ret;
 }
