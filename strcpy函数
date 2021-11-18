@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+//源字符串必须包含'\0'
+//会将'\0'拷贝到目标空间
+//目的地空间必须足够大
+//目标空间必须能够改变
+char* mystrcpy(char* dest, char* src)
+{
+    assert(dest != NULL);
+    assert(str != NULL);
+    char* ret = dest;
+    //拷贝src指向的字符串到dest指向的空间，包括'\0'
+    while(*dest++ = *stc++)
+    {
+        ;
+    }
+    //返回目的地空间的起始位置
+    return ret;
+    
+}
+int main()
+{
+    char arr1[] = "abcdefg";
+    char arr2[] = "gcd";
+    mystrcpyl;
+    return 0;
+}
