@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+# define N 1000000007
+char * mystrstr(const char* p1, const char* p2)
+{
+    char* s1 = NULL;
+    char* s2 = NULL;
+    char* cur = (char*)p1;
+    if(*p2 == '\0')
+    {
+        return (char*)p1;
+    }
+    while(*cur)//龙头
+    {
+        s1 = cur;//s1从龙头开始
+        s2 = (char*)p2;//s2从头开始
+        while(*s1 && *s2 && *s1 == *s2)//用循环往下找子串 直到 s1 s2 为'\0'
+        {
+            s1++;
+            s2++;
+        }
+        if(*s2 == '\0')//说明找到
+        {
+            return cur;
+        }
+        cur++;//没找到龙头就往下
+    }
+}
+int main()
+{
+    char a[] = "abcdef";
+    char b[] = "cdef";
+    printf("%s", mystrstr(a,b));
+    return 0;
+}
