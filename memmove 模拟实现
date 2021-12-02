@@ -1,0 +1,35 @@
+自身移动  
+两种情况
+1.  dest < src  前->后
+2. dest > src  后->前
+
+#include <iostream>
+
+void* mymemmove(void * dest,const void* src, size_t count1)
+{
+    char* d = (char*)dest;
+    char* s = (char*)src;
+    if(dest < src)//从前往后
+    {
+        while(count1--)
+        {
+            *d = *s;
+            d++;
+            s++;
+        }
+    }
+    else
+    {
+        while(count1--)//从后往前  十分精巧  随动而动
+        {
+            *(d+count1) = *(s+count1);
+        }
+    }
+    return dest;
+}
+int main()
+{
+   int a1[] = {1,2,3,4,5,6,7,8,9};
+   mymemmove(a1, a1+3, sizeof(a1[0])*5);
+    return 0;
+}
