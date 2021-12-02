@@ -1,0 +1,22 @@
+#include <iostream>
+
+void* mymemcpy(void * dest,const void* src, size_t count1)
+{
+    void* ret = dest;
+    char* d = (char*)dest;
+    char* s = (char*)src;
+    while(count1--)
+    {
+        *d = *s;
+        d++;
+        s++;
+    }
+    return ret;
+}
+int main()
+{
+   int a1[] = {1,2,3,4,5,6,7,8,9};
+   int a2[10] = {0};
+   mymemcpy(a2, a1, sizeof(a1));
+    return 0;
+}
