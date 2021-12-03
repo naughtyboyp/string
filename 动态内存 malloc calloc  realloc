@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main ()
+{
+    int* p = (int*)malloc(40);//没有初始化
+    //int* p1 = (int*)calloc(10,sizeof(int));//会初始化
+    int i = 0;
+    for(i = 0; i< 10; i++)
+    {
+        *(p+i) = i;
+        printf("%d ", *(p+i));
+    }
+    //realloc注意事项
+    //1.如果p指向的空间之后有足够的内存空间则可以追加，返回p
+    //2.如果内存空间不够，则开辟新的满足需求的空间，返回新的地址，并拷贝旧的内容，且释放旧的内存
+    //3.得用一个新的变量来接受realloc函数的返回值
+    int* ptr = realloc(p, 50);
+    if(ptr != NULL)
+    {
+        p = ptr;
+         for(i = 0; i< 12; i++)
+        {
+            *(p+i) = i;
+            printf("%d ", *(p+i));
+        }
+    }
+    free(p);
+    p = NULL;
+    return 0;
+}
+
