@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<string.h>
+#include<algorithm>
+#include<math.h>
+char * Get()
+{
+    char p[] = "dddddd";//局部变量存在栈区，出了范围 自动销毁，所以不要随意用栈空间的地址，否则容易非法访问
+    return p;
+}
+void Test()
+{
+    char* str = NULL;
+    str = Get();//经典返回栈空间地址问题
+    printf(str);
+}
+int main()
+{
+    Test();
+}
+
+
+
+#include<stdio.h>
+#include<string.h>
+#include<algorithm>
+#include<math.h>
+
+void Test()
+{
+    char* str = (char*)malloc(100);
+    strcpy(str, "hello");
+    free(str);//free释放str指向的空间后，并不会把str置为空指针
+    //str = NULL;
+    if(str != NULL)
+    {
+        strcpy(str, "world");
+        printf(str);
+    }
+}
+int main()
+{
+    Test();
+}
